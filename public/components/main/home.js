@@ -69,6 +69,7 @@ export default class Home extends React.Component {
     ];
 
     const getRowProps = (item) => {
+      console.log(item);
       const { id } = item;
       return {
         'data-test-subj': `row-${id}`,

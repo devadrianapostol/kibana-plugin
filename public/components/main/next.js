@@ -18,10 +18,9 @@ export default class Next extends React.Component {
     this.state = {};
   }
   componentDidMount() {
-
+    this.getData();
   }
-
-  render() {
+  getData(){
     const { title } = this.props;
     const  id  = this.props.match.params.id;
     const { httpClient } = this.props;
@@ -29,20 +28,24 @@ export default class Next extends React.Component {
     // trebuie mutat in alta functie
     httpClient.get('../api/ady/index/' + id).then((resp) => {
       this.state.data = resp.data;
+      console.log(resp);
     });
+  }
+
+  render() {
 
     return (
       <EuiPage>
         <EuiPageBody>
           <EuiPageHeader>
             <EuiTitle size="l">
-              <h1>{ id }</h1>
+              <h1>{ this.props.match.params.id }</h1>
             </EuiTitle>
           </EuiPageHeader>
           <EuiPageContent>
             <EuiPageContentHeader>
               <EuiTitle>
-                <h2>{ this.props.match.params.id }</h2>
+                <h2>{ this.props.match.params.id  }</h2>
               </EuiTitle>
             </EuiPageContentHeader>
             <EuiPageContentBody>

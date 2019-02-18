@@ -10,10 +10,7 @@ export default function (server) {
           index: req.params.name
         }).then(function (response) {
           // Return just the names of all indices to the client.
-           /* res(
-              Object.keys(response.metadata.indices)
-            );*/
-         res(response);
+          res(response);
         }).catch((e) => {
           rej(e);
         });
