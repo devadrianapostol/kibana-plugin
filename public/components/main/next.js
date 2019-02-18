@@ -19,17 +19,18 @@ export default class Next extends React.Component {
   }
   componentDidMount() {
 
-
   }
 
   render() {
     const { title } = this.props;
-    const { id } = this.props.match.params.id;
+    const  id  = this.props.match.params.id;
     const { httpClient } = this.props;
-    const { id } = this.props.match.params.id;
-    httpClient.get(`../api/ady/index/${id}`).then((resp) => {
-      console.log(resp);
+
+    // trebuie mutat in alta functie
+    httpClient.get('../api/ady/index/' + id).then((resp) => {
+      this.state.data = resp.data;
     });
+
     return (
       <EuiPage>
         <EuiPageBody>
@@ -48,6 +49,9 @@ export default class Next extends React.Component {
               <EuiText>
                 <h3>This is the second view</h3>
                 <a href="#back">Back</a>
+                <div>
+                  { this.state.data || 'no data yet' }
+                </div>
               </EuiText>
             </EuiPageContentBody>
           </EuiPageContent>

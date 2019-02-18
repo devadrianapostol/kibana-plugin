@@ -4,7 +4,6 @@ export default function (server) {
     path: '/api/ady/example',
     method: 'GET',
     handler(req) {
-
       return new Promise((res, rej) => {
         server.plugins.elasticsearch.getCluster('data').callWithRequest(req, 'cluster.state', {
           metric: 'metadata',
